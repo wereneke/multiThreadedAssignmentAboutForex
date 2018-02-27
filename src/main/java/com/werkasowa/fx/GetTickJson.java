@@ -10,9 +10,9 @@ public class GetTickJson {
     private final String USER_AGENT = "Mozilla/5.0";
 
     // HTTP GET request
-    public String sendGet() throws Exception {
+    public String sendGet(String symbol) throws Exception {
 
-        String url = "https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
+        String url = String.format("https://forex.1forge.com/1.0.3/quotes?pairs=%s&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR", symbol);
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -24,8 +24,6 @@ public class GetTickJson {
         con.setRequestProperty("User-Agent", USER_AGENT);
 
         int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
 
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
@@ -36,9 +34,6 @@ public class GetTickJson {
             response.append(inputLine);
         }
         in.close();
-
-        //print result
-        System.out.println(response.toString());
 
         return response.toString();
     }

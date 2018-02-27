@@ -1,10 +1,6 @@
 package com.werkasowa.fx;
 
 import java.util.ArrayList;
-import java.lang.reflect.Type;
-import java.util.Collection;
-
-import com.google.gson.reflect.TypeToken;
 
 public class App {
 
@@ -14,7 +10,7 @@ public class App {
 
         DeserializeTicks deserializeTicks = new DeserializeTicks();
         GetTickJson http = new GetTickJson();
-        String json = http.sendGet();
+        String json = http.sendGet("EURUSD");
 
         ArrayList<Tick> ticks = deserializeTicks.readJson(json);
 
