@@ -10,7 +10,7 @@ public class GetTickJson {
     private final String USER_AGENT = "Mozilla/5.0";
 
     // HTTP GET request
-    public void sendGet() throws Exception {
+    public String sendGet() throws Exception {
 
         String url = "https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
 
@@ -39,6 +39,8 @@ public class GetTickJson {
 
         //print result
         System.out.println(response.toString());
+
+        return response.toString();
     }
 
 }

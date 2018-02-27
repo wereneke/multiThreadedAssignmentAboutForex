@@ -18,4 +18,10 @@ public class Tick {
         this.ask = ask;
         this.timestamp = timestamp;
     }
+
+    @Override
+    public String toString() {
+
+        return symbol;
+    }
 }
