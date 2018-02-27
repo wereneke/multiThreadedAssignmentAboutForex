@@ -1,13 +1,12 @@
 package com.werkasowa.fx;
 
-/**
- * Hello world!
- *
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+public class App {
+
+    private final String USER_AGENT = "Mozilla/5.0";
+
+    public static void main(String[] args) throws Exception {
+
+        GetTickJson http = new GetTickJson();
+        http.sendGet();
     }
 }
