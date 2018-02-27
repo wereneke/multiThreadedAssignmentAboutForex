@@ -1,4 +1,4 @@
-package com.werkasowa.fx;
+package com.werkasowa.fx.tick;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

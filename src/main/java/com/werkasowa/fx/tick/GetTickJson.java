@@ -1,4 +1,4 @@
-package com.werkasowa.fx;
+package com.werkasowa.fx.tick;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

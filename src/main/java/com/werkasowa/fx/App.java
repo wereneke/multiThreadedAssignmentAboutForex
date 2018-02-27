@@ -1,5 +1,9 @@
 package com.werkasowa.fx;
 
+import com.werkasowa.fx.tick.DeserializeTicks;
+import com.werkasowa.fx.tick.GetTickJson;
+import com.werkasowa.fx.tick.Tick;
+
 import java.util.ArrayList;
 
 public class App {

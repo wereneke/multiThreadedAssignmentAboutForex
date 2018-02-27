@@ -1,7 +1,6 @@
-package com.werkasowa.fx;
+package com.werkasowa.fx.tick;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Date;
 
 public class Tick {
 
@@ -22,6 +21,7 @@ public class Tick {
     @Override
     public String toString() {
 
-        return symbol;
+        String date = new Date(timestamp).toString();
+        return String.format("%s | price: %f | bid: %f | ask: %f | %s", symbol, price, bid, ask, date);
     }
 }
