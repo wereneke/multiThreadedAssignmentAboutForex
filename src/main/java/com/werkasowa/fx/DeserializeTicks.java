@@ -14,7 +14,7 @@ public class DeserializeTicks {
     Gson gson = new Gson();
     JsonParser parser = new JsonParser();
 
-    public Tick tick(String json) {
+    public boolean tick(String json) {
 
         Collection collection = new ArrayList();
         JsonArray array = parser.parse(json).getAsJsonArray();
@@ -22,7 +22,7 @@ public class DeserializeTicks {
             collection.add(gson.fromJson(o, String.class));
         }
 
-        return new Tick();
+        return false;
     }
 
     public static void main(String[] args) {
