@@ -1,4 +1,4 @@
-package com.werkasowa.fx;
+package com.werkasowa.fx.tick;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,9 +10,10 @@ public class GetTickJson {
     private final String USER_AGENT = "Mozilla/5.0";
 
     // HTTP GET request
-    public void sendGet() throws Exception {
+    public String sendGet(String pair) throws Exception {
 
-        String url = "https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD,GBPJPY,AUDUSD&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
+        String url = "https://forex.1forge.com/1.0.3/quotes?pairs="
+                + pair + "&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -38,7 +39,7 @@ public class GetTickJson {
         in.close();
 
         //print result
-        System.out.println(response.toString());
+        return response.toString();
     }
 
 }
