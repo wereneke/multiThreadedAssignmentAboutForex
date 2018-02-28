@@ -12,7 +12,7 @@ public class GetTickJson {
     // HTTP GET request
     public void sendGet() throws Exception {
 
-        String url = "https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
+        String url = "https://forex.1forge.com/1.0.3/quotes?pairs=EURUSD,GBPJPY,AUDUSD&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -37,8 +37,8 @@ public class GetTickJson {
         }
         in.close();
 
-        String jsonik = response.toString();
-        System.out.println(jsonik.substring(1,jsonik.length()-1));
+        //print result
+        System.out.println(response.toString());
     }
 
 }
