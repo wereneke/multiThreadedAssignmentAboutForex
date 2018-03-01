@@ -3,36 +3,31 @@ package com.werkasowa.fx.runnable;
 import com.werkasowa.fx.tick.DeserializeTick;
 import com.werkasowa.fx.tick.GetTickJson;
 import com.werkasowa.fx.tick.Tick;
-import com.werkasowa.fx.view.View;
 
-public class Ticking extends Thread {
+public class Ticking {
 
-    View view;
+    DeserializeTick deserializeTick = new DeserializeTick();
+    GetTickJson http = new GetTickJson();
+    Tick tick;
 
-    public Ticking(View view
-    ) {
-        this.view = view;
-        this.start();
+
+    public Ticking(String pair) {
+        tick = refreshTick(pair);
     }
 
-    public void run() {
+    public void tick() {
 
-        DeserializeTick deserializeTick = new DeserializeTick();
-        GetTickJson http = new GetTickJson();
-        String pair = view.getPair();
+        while (true) {
 
-        while (!Thread.interrupted()) {
-            try {
-                String json = http.sendGet(pair);
-                Tick tick = deserializeTick.readJson(json);
-                System.out.println(tick);
-                Thread.sleep(1000);
-
-            } catch (InterruptedException e) {
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
         }
+    }
+
+    private Tick refreshTick(Tick tick) {
+
+        try {
+            String json = http.sendGet(tick.getSymbol());
+            tick = deserializeTick.readJson(json);
+        } catch (Exception e) {}
+
     }
 }
