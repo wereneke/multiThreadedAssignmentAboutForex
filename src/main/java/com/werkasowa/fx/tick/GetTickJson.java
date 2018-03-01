@@ -38,8 +38,10 @@ public class GetTickJson {
         }
         in.close();
 
-        //print result
-        return response.toString();
+        String json = response.toString();
+        json = json.substring(1, json.length()-1);
+
+        return json;
     }
 
 }
