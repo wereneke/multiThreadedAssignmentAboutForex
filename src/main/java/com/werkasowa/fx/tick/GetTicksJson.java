@@ -10,10 +10,10 @@ public class GetTicksJson {
     private final String USER_AGENT = "Mozilla/5.0";
 
     // HTTP GET request
-    public String sendGet(String pair) throws Exception {
+    public String sendGet(String pairs) throws Exception {
 
         String url = "https://forex.1forge.com/1.0.3/quotes?pairs="
-                + pair + "&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
+                + pairs + "&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();

@@ -1,7 +1,5 @@
 package com.werkasowa.fx;
 
-
-import com.werkasowa.fx.runnable.Ticking;
 import com.werkasowa.fx.view.View;
 
 public class App {
