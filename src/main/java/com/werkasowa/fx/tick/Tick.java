@@ -18,6 +18,26 @@ public class Tick {
         this.timestamp = timestamp;
     }
 
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public float getBid() {
+        return bid;
+    }
+
+    public float getAsk() {
+        return ask;
+    }
+
+    public int getTimestamp() {
+        return timestamp;
+    }
+
     @Override
     public String toString() {
 
