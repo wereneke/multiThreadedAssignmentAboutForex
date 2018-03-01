@@ -12,12 +12,10 @@ public class App {
         App app = new App();
         boolean run = true;
         while (run) {
-            if (app.view.newTracking()) {
-                Ticking ticking = new Ticking(app.view);
-            }
-            run = app.view.toRun("exit");
-        }
+            app.view.run();
+
 
         }
+    }
 
 }

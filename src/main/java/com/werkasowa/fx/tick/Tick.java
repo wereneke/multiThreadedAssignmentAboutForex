@@ -21,7 +21,8 @@ public class Tick {
     @Override
     public String toString() {
 
-        String date = new Date(timestamp).toString();
-        return String.format("%s | price: %f | bid: %f | ask: %f | %s", symbol, price, bid, ask, date);
+        return String.format("%s | price: %f | bid: %f | ask: %f", symbol, price, bid, ask);
+//        String date = new Date(timestamp).toString();
+//        return String.format("%s | price: %f | bid: %f | ask: %f | %s", symbol, price, bid, ask, date);
     }
 }

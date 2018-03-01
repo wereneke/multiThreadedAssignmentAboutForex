@@ -2,7 +2,15 @@ package com.werkasowa.fx.view;
 
 import java.util.Scanner;
 
-public class View {
+public class View implements Runnable {
+
+    public void run() {
+
+    }
+
+    public void interrupted() {
+
+    }
 
     Scanner in = new Scanner(System.in);
 
@@ -25,5 +33,6 @@ public class View {
         if (answer.equals(command)) return false;
         else return true;
     }
+
 
 }
