@@ -1,13 +1,13 @@
 package com.werkasowa.fx.runnable;
 
-import com.werkasowa.fx.tick.DeserializeTick;
-import com.werkasowa.fx.tick.GetTickJson;
+import com.werkasowa.fx.tick.DeserializeTicks;
+import com.werkasowa.fx.tick.GetTicksJson;
 import com.werkasowa.fx.tick.Tick;
 
 public class Ticking {
 
-    private DeserializeTick deserializeTick = new DeserializeTick();
-    private GetTickJson http = new GetTickJson();
+    private DeserializeTicks deserializeTicks = new DeserializeTicks();
+    private GetTicksJson http = new GetTicksJson();
     private String symbol;
     private Tick tick;
 
@@ -26,7 +26,7 @@ public class Ticking {
     private void refreshTick() {
         try {
             String json = http.sendGet(this.symbol);
-            this.tick = deserializeTick.readJson(json);
+            this.tick = deserializeTicks.readJson(json);
         } catch (Exception e) {}
     }
 

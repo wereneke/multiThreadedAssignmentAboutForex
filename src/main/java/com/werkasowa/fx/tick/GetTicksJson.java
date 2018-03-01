@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class GetTickJson {
+public class GetTicksJson {
 
     private final String USER_AGENT = "Mozilla/5.0";
 
@@ -38,10 +38,7 @@ public class GetTickJson {
         }
         in.close();
 
-        String json = response.toString();
-        json = json.substring(1, json.length()-1);
-
-        return json;
+        return response.toString();
     }
 
 }
