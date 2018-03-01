@@ -6,28 +6,31 @@ import com.werkasowa.fx.tick.Tick;
 
 public class Ticking {
 
-    DeserializeTick deserializeTick = new DeserializeTick();
-    GetTickJson http = new GetTickJson();
-    Tick tick;
+    private DeserializeTick deserializeTick = new DeserializeTick();
+    private GetTickJson http = new GetTickJson();
+    private String symbol;
+    private Tick tick;
 
 
     public Ticking(String pair) {
-        tick = refreshTick(pair);
+        this.symbol = pair;
+        refreshTick();
     }
 
     public void tick() {
-
         while (true) {
-
+            refreshTick();
         }
     }
 
-    private Tick refreshTick(Tick tick) {
-
+    private void refreshTick() {
         try {
-            String json = http.sendGet(tick.getSymbol());
-            tick = deserializeTick.readJson(json);
+            String json = http.sendGet(this.symbol);
+            this.tick = deserializeTick.readJson(json);
         } catch (Exception e) {}
+    }
 
+    public Tick getTick() {
+        return tick;
     }
 }
