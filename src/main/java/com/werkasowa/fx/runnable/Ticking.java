@@ -7,9 +7,11 @@ import com.werkasowa.fx.view.View;
 
 public class Ticking extends Thread {
 
-    View view = new View();
+    View view;
 
-    public Ticking() {
+    public Ticking(View view
+    ) {
+        this.view = view;
         this.start();
     }
 
@@ -21,10 +23,10 @@ public class Ticking extends Thread {
 
         while (!Thread.interrupted()) {
             try {
-                Thread.sleep(1000);
                 String json = http.sendGet(pair);
                 Tick tick = deserializeTick.readJson(json);
                 System.out.println(tick);
+                Thread.sleep(1000);
 
             } catch (InterruptedException e) {
 
