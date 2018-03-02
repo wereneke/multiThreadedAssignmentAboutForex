@@ -11,10 +11,8 @@ public class App {
         App app = new App();
         boolean run = true;
 
-        app.viewThread.start();
-        app.viewThread.sleep(3000);
-        app.viewThread.interrupt();
-
+        app.viewThread.run();
+//        app.viewThread.sleep(3000);
+//        app.viewThread.interrupt();
     }
-
 }
