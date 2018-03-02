@@ -5,7 +5,8 @@ import com.werkasowa.fx.view.View;
 public class App {
 
     Thread viewThread = new Thread(new View());
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws InterruptedException {
 
         App app = new App();
         boolean run = true;
