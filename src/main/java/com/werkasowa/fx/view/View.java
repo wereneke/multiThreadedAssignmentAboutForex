@@ -5,10 +5,17 @@ import java.util.Scanner;
 public class View implements Runnable {
 
     public void run() {
+        try {
 
-    }
-
-    public void interrupted() {
+            while (true) {
+                Thread.sleep(1000);
+                System.out.println("view running");
+//                throw new InterruptedException();
+            }
+        } catch (InterruptedException e) {
+//            e.printStackTrace();
+            System.out.println("view interrupted");
+        }
 
     }
 

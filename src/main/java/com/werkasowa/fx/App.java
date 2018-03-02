@@ -6,16 +6,16 @@ import com.werkasowa.fx.view.View;
 
 public class App {
 
-    View view = new View();
-    public static void main(String[] args) throws Exception {
+    Thread viewThread = new Thread(new View());
+    public static void main(String[] args) {
 
         App app = new App();
         boolean run = true;
-        while (run) {
-            app.view.run();
 
+        app.viewThread.start();
+        app.viewThread.sleep(3000);
+        app.viewThread.interrupt();
 
-        }
     }
 
 }
