@@ -1,23 +1,28 @@
 package com.werkasowa.fx.runnable;
 
+import com.werkasowa.fx.view.View;
+
 public class Printer implements Runnable {
 
     public void run() {
+
+        View view = new View();
         try {
             while (true) {
-                System.out.println("Press 'Enter' to enter the menu");
+                view.printQuotes();
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
-            System.out.println("View interrupted");
+
+            // to change --------------------------------
+            System.out.println("Printer interrupted");
             try {
                 Thread.sleep(3000);
                 new Printer().run();
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        }
+            } catch (InterruptedException e1) {}
+            // ------------------------------------------
 
+        }
     }
 
 
