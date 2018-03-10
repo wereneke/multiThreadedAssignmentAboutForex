@@ -1,18 +1,12 @@
 package com.werkasowa.fx;
 
-import com.werkasowa.fx.view.View;
+import com.werkasowa.fx.controller.Controller;
 
 public class App {
 
-    Thread viewThread = new Thread(new View());
-
     public static void main(String[] args) throws InterruptedException {
 
-        App app = new App();
-        boolean run = true;
-
-        app.viewThread.run();
-//        app.viewThread.sleep(3000);
-//        app.viewThread.interrupt();
+        Controller controller = new Controller();
+        controller.startApp();
     }
 }

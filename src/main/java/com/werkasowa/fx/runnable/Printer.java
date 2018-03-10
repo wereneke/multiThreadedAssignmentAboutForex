@@ -1,46 +1,26 @@
-package com.werkasowa.fx.view;
+package com.werkasowa.fx.runnable;
 
-import java.io.IOException;
-import java.util.Scanner;
-
-public class View implements Runnable {
-
-    Scanner scanner = new Scanner(System.in);
+public class Printer implements Runnable {
 
     public void run() {
         try {
             while (true) {
-
                 System.out.println("Press 'Enter' to enter the menu");
-//                enterMenu();
-//                clearScreen();
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             System.out.println("View interrupted");
+            try {
+                Thread.sleep(3000);
+                new Printer().run();
+            } catch (InterruptedException e1) {
+                e1.printStackTrace();
+            }
         }
 
     }
 
-    private void clearScreen() {
 
-        System.out.print("\\033[H\\033[2J");
-
-//        for (int i = 0; i < 20; i++) System.out.println("\n");
-
-//        try {
-//            Runtime.getRuntime().exec("clear");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-    private void enterMenu() {
-        String readString = scanner.nextLine();
-        System.out.println(readString);
-        if (readString.equals(""))
-            System.out.println("Enter Key pressed.");
-    }
 
 //    public boolean newTracking() {
 //        System.out.println("Do you want start another tracking? Y/N" + "\n");

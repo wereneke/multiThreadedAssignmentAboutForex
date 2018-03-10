@@ -24,7 +24,9 @@ public class TickContainer implements Runnable {
         try {
             String json = http.sendGet(pairs);
             ticks = deserializeTicks.readJson(json);
-        } catch (Exception e) {}
+        } catch (Exception e) {
+
+        }
 
         return ticks;
     }
