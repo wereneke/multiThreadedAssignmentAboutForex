@@ -24,7 +24,7 @@ public class View implements Runnable {
 
     private void clearScreen() {
 
-        System.out.print("\033[H\033[2J");
+        System.out.print("\\033[H\\033[2J");
 
 //        for (int i = 0; i < 20; i++) System.out.println("\n");
 
