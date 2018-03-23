@@ -7,17 +7,15 @@ import java.util.Arrays;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         TickContainer ticks = new TickContainer();
 
         ticks.addPair("EURUSD");
+        ticks.addPair("GBPAUD");
 
         Thread ticking = new Thread(ticks);
         ticking.start();
 
-        while (ticking.isAlive()) {
-            Arrays.asList(ticks.getTicks()).forEach(System.out::println);
-        }
     }
 }
