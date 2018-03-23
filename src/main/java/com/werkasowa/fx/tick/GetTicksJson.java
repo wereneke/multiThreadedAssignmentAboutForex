@@ -7,6 +7,8 @@ import java.net.URL;
 
 public class GetTicksJson {
 
+    //SpringRestTemplate!!!!! <-()
+
     private final String USER_AGENT = "Mozilla/5.0";
 
     // HTTP GET request
@@ -40,5 +42,4 @@ public class GetTicksJson {
 
         return response.toString();
     }
-
 }

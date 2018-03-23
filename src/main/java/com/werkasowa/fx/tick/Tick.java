@@ -1,7 +1,5 @@
 package com.werkasowa.fx.tick;
 
-import java.util.Date;
-
 public class Tick {
 
     String symbol;
@@ -42,7 +40,5 @@ public class Tick {
     public String toString() {
 
         return String.format("%s | price: %f | bid: %f | ask: %f", symbol, price, bid, ask);
-//        String date = new Date(timestamp).toString();
-//        return String.format("%s | price: %f | bid: %f | ask: %f | %s", symbol, price, bid, ask, date);
     }
 }

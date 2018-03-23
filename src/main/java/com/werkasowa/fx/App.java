@@ -4,16 +4,17 @@ import com.werkasowa.fx.view.View;
 
 public class App {
 
-    View view = new View();
     public static void main(String[] args) {
 
-        App app = new App();
-        boolean run = true;
-        while (run) {
-            app.view.run();
+    Thread viewThread = new Thread(new View());
+
+        try {
+            viewThread.start();
+            viewThread.sleep(1000);
+            viewThread.interrupt();
+        }catch (InterruptedException e) {}
 
 
-        }
     }
 
 }
