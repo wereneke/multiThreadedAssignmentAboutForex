@@ -4,14 +4,15 @@ import com.werkasowa.fx.tick.DeserializeTicks;
 import com.werkasowa.fx.tick.GetTicksJson;
 import com.werkasowa.fx.tick.Tick;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class TickContainer implements Runnable {
 
     public Collection<Tick> activeTicks;
-    String pairs;
 
-    private DeserializeTicks deserializeTicks = new DeserializeTicks();
+    String pairs;
+    ArrayList<Tick> ticks;
     private GetTicksJson http = new GetTicksJson();
 
     public TickContainer(String pairs) {
@@ -23,8 +24,11 @@ public class TickContainer implements Runnable {
 
         try {
             String json = http.sendGet(pairs);
-            this.activeTicks = deserializeTicks.readJson(json);
-        } catch (Exception e) {}
+            ticks = (ArrayList<Tick>) DeserializeTicks.readJson(json);
+
+        } catch (Exception e) {
+
+        }
     }
 
     @Override

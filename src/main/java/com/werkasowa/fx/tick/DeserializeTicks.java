@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class DeserializeTicks {
 
-    public Collection<Tick> readJson(String json) {
+    public static Collection<Tick> readJson(String json) {
 
         GsonBuilder gsonBuilder = new GsonBuilder();
         Gson gson = gsonBuilder.create();
