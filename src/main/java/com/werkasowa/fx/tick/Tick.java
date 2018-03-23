@@ -2,8 +2,10 @@ package com.werkasowa.fx.tick;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.io.Serializable;
+
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Tick {
+public class Tick implements Serializable {
 
     String symbol;
     float price;
@@ -18,6 +20,8 @@ public class Tick {
         this.ask = ask;
         this.timestamp = timestamp;
     }
+
+    public Tick() {}
 
     public String getSymbol() {
         return symbol;
@@ -37,6 +41,26 @@ public class Tick {
 
     public int getTimestamp() {
         return timestamp;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public void setBid(float bid) {
+        this.bid = bid;
+    }
+
+    public void setAsk(float ask) {
+        this.ask = ask;
+    }
+
+    public void setTimestamp(int timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Override

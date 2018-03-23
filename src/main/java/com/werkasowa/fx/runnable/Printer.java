@@ -1,16 +1,13 @@
 package com.werkasowa.fx.runnable;
 
-import com.werkasowa.fx.tick.GetTicksJson;
-import com.werkasowa.fx.view.View;
 
 public class Printer implements Runnable {
 
     public void run() {
 
-        View view = new View();
         try {
             while (true) {
-                view.printQuotes(new GetTicksJson().sendGet("EURUSD"));
+                ;
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {

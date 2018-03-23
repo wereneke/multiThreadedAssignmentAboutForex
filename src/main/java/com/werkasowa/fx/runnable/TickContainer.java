@@ -1,35 +1,37 @@
 package com.werkasowa.fx.runnable;
 
-import com.werkasowa.fx.tick.DeserializeTicks;
-import com.werkasowa.fx.tick.GetTicksJson;
 import com.werkasowa.fx.tick.Tick;
 
-import java.util.ArrayList;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
 
 public class TickContainer implements Runnable {
 
-    private String pairs;
-    private ArrayList<Tick> ticks;
-    private GetTicksJson http = new GetTicksJson();
+    private String pairs = new String();
+    StringBuilder sb = new StringBuilder();
+    RestTemplate restTemplate = new RestTemplate();
 
+    public Tick[] getTicks() {
 
-    private ArrayList<Tick> getTicks() {
+        Tick[] ticks = restTemplate.getForObject(createURL(), Tick[].class);
 
-        try {
-            String json = http.sendGet(pairs);
-            ticks = (ArrayList<Tick>) DeserializeTicks.readJson(json);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
         return ticks;
+    }
+
+    private String createURL() {
+        sb.setLength(0);
+
+        sb.append("https://forex.1forge.com/1.0.3/quotes?pairs=");
+        sb.append(pairs);
+        sb.append("&api_key=r5WczlowKoennZAzRD6hNppugGxVATMR");
+        return sb.toString();
     }
 
     public void addPair(String pair) {
 
         if (!pairs.contains(pair)) {
 
-            StringBuilder sb = new StringBuilder(pairs);
+            sb.setLength(0);
             if (pairs.length()!=0) sb.append(",");
             sb.append(pair);
 
