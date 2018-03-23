@@ -5,22 +5,51 @@ import java.util.Scanner;
 public class Listener implements Runnable {
 
 
+    private Scanner scanner;
     private Thread printingThread;
 
-    public Listener(Thread tPr) {
-        this.printingThread = tPr;
+    public Listener() {
+        this.scanner  = new Scanner(System.in);
+        this.printingThread = Thread.currentThread();
     }
 
     public void run() {
 
-        while (true) {
-            Scanner scanner = new Scanner(System.in);
-            if (scanner.hasNextLine()) {
-                System.out.println("Enter Key pressed.");
-                printingThread.interrupt();
-                scanner.close();
+        while (!printingThread.isInterrupted()) {
+
+            String input = listen();
+            if (input != null) {
+                handleInput(input);
             }
-//                Thread.sleep(1000);
+
         }
+        scanner.close();
+    }
+
+    private String listen() {
+
+        String input = null;
+        if (scanner.hasNextLine()) {
+           input = scanner.nextLine();
+        }
+        return input;
+    }
+
+    private void handleInput(String input) {
+
+        if (input.equals(".quit")) {
+            //code for closing app
+        }
+        if (input.startsWith("rm")) {
+            String tickName = input.substring(3,9);
+
+            // remove tickname from getting it from internet
+        }
+        if (input.length()==6) {
+
+            //add input to geter from interneter
+        }
+
+
     }
 }

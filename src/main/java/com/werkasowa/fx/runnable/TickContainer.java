@@ -5,29 +5,35 @@ import com.werkasowa.fx.tick.GetTicksJson;
 import com.werkasowa.fx.tick.Tick;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 public class TickContainer implements Runnable {
 
-    public Collection<Tick> activeTicks;
-
-    String pairs;
-    ArrayList<Tick> ticks;
+    private String pairs;
+    private ArrayList<Tick> ticks;
     private GetTicksJson http = new GetTicksJson();
 
-    public TickContainer(String pairs) {
-        this.pairs = pairs;
-        getTicks(pairs);
-    }
 
-    private void getTicks(String pairs) {
+    private ArrayList<Tick> getTicks() {
 
         try {
             String json = http.sendGet(pairs);
             ticks = (ArrayList<Tick>) DeserializeTicks.readJson(json);
 
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return ticks;
+    }
 
+    public void addPair(String pair) {
+
+        if (!pairs.contains(pair)) {
+
+            StringBuilder sb = new StringBuilder(pairs);
+            if (pairs.length()!=0) sb.append(",");
+            sb.append(pair);
+
+            pairs = sb.toString();
         }
     }
 
@@ -36,7 +42,7 @@ public class TickContainer implements Runnable {
 
         try {
             while (!Thread.interrupted()) {
-                getTicks(this.pairs);
+                getTicks();
                 Thread.sleep(1000);
             }
         }catch (InterruptedException e) {}

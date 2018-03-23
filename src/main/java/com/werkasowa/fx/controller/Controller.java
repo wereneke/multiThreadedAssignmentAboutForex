@@ -10,7 +10,7 @@ public class Controller {
         Thread tPr = new Thread(new Printer());
         tPr.start();
 
-        Thread tLi = new Thread(new Listener(tPr));
+        Thread tLi = new Thread(new Listener());
         tLi.start();
 
     }
