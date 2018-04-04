@@ -1,32 +1,14 @@
 package com.werkasowa.fx.runnable;
 
+import java.util.Arrays;
 
-public class Printer implements Runnable {
+public class Printer {
 
-    public void run() {
-
-        try {
-            while (true) {
-                Thread.sleep(1000);
-            }
-        } catch (InterruptedException e) {
-
-            // to change --------------------------------
-            System.out.println("Printer interrupted");
-            try {
-                Thread.sleep(3000);
-                new Printer().run();
-            } catch (InterruptedException e1) {}
-            // ------------------------------------------
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void comunicate(String message) {
+        System.out.println(message);
     }
 
-
-
-
-
-
+    public void printTicks(TickContainer ticks) {
+        Arrays.asList(ticks.getTicks()).forEach(System.out::println);
+    }
 }

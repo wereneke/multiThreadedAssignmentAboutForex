@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 public class TickContainer implements Runnable {
 
-    private String pairs = new String();
+    private String pairs = "";
     private StringBuilder sb = new StringBuilder();
     private RestTemplate restTemplate = new RestTemplate();
 
@@ -45,7 +45,7 @@ public class TickContainer implements Runnable {
         try {
             while (!Thread.interrupted()) {
                 getTicks();
-                Thread.sleep(1000);
+                Thread.sleep(3000);
             }
         }catch (InterruptedException e) {}
 
