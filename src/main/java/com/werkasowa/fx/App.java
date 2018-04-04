@@ -14,7 +14,7 @@ public class App implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments applicationArguments) throws Exception {
+    public void run(ApplicationArguments applicationArguments) {
         Thread controlling = new Thread(new Controller());
         controlling.start();
     }
