@@ -7,7 +7,6 @@ public class Printer implements Runnable {
 
         try {
             while (true) {
-                ;
                 Thread.sleep(1000);
             }
         } catch (InterruptedException e) {

@@ -8,8 +8,8 @@ import org.springframework.web.client.RestTemplate;
 public class TickContainer implements Runnable {
 
     private String pairs = new String();
-    StringBuilder sb = new StringBuilder();
-    RestTemplate restTemplate = new RestTemplate();
+    private StringBuilder sb = new StringBuilder();
+    private RestTemplate restTemplate = new RestTemplate();
 
     public Tick[] getTicks() {
 

@@ -4,24 +4,20 @@ import java.util.Scanner;
 
 public class Listener implements Runnable {
 
-
     private Scanner scanner;
-    private Thread printingThread;
 
     public Listener() {
         this.scanner  = new Scanner(System.in);
-        this.printingThread = Thread.currentThread();
     }
 
     public void run() {
 
-        while (!printingThread.isInterrupted()) {
+        while (!Thread.currentThread().isInterrupted()) {
 
             String input = listen();
             if (input != null) {
                 handleInput(input);
             }
-
         }
         scanner.close();
     }
