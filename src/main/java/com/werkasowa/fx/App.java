@@ -1,21 +1,17 @@
 package com.werkasowa.fx;
 
-
-import com.werkasowa.fx.runnable.TickContainer;
-
-import java.util.Arrays;
+import com.werkasowa.fx.controller.Controller;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
 
     public static void main(String[] args) throws InterruptedException {
 
-        TickContainer ticks = new TickContainer();
+        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 
-        ticks.addPair("EURUSD");
-        ticks.addPair("GBPAUD");
+        Controller controller = ctx.getBean(Controller.class);
 
-        Thread ticking = new Thread(ticks);
-        ticking.start();
+        controller.run();
 
     }
 }

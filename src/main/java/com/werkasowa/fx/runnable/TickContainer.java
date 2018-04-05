@@ -2,10 +2,10 @@ package com.werkasowa.fx.runnable;
 
 import com.werkasowa.fx.tick.Tick;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-
+@Component
 public class TickContainer implements Runnable {
 
     private String pairs = new String();
@@ -47,14 +47,17 @@ public class TickContainer implements Runnable {
         return ticks;
     }
 
+    public String getPairs() {
+        return pairs;
+    }
+
     @Override
     public void run() {
 
         try {
             while (!Thread.interrupted()) {
                 updateTicks();
-                Arrays.asList(ticks).forEach(System.out::println);
-                Thread.sleep(1000);
+                Thread.sleep(5000);
             }
         }catch (InterruptedException e) {}
 
