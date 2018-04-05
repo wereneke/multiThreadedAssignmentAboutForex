@@ -13,7 +13,6 @@ public class TickContainer implements Runnable {
     private RestTemplate restTemplate = new RestTemplate();
     private Tick[] ticks = null;
 
-
     private void updateTicks() {
 
         this.ticks = restTemplate.getForObject(createURL(), Tick[].class);
@@ -56,8 +55,10 @@ public class TickContainer implements Runnable {
 
         try {
             while (!Thread.interrupted()) {
+
                 updateTicks();
                 Thread.sleep(5000);
+
             }
         }catch (InterruptedException e) {}
 

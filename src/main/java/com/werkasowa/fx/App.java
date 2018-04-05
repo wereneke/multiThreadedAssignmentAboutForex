@@ -1,17 +1,22 @@
 package com.werkasowa.fx;
 
-import com.werkasowa.fx.controller.Controller;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
 
-public class App {
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-    public static void main(String[] args) throws InterruptedException {
+@SpringBootApplication
+public class App implements ApplicationRunner {
 
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("ApplicationContext.xml");
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
 
-        Controller controller = ctx.getBean(Controller.class);
-
-        controller.run();
+    @Override
+    public void run(ApplicationArguments applicationArguments) {
+        Thread controlling = new Thread(new Controller());
+        controlling.start();
 
     }
 }
