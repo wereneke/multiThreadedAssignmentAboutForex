@@ -25,7 +25,6 @@ public class Listener implements Runnable {
 
         if (scanner.hasNextLine()) {
            this.lastOrder = scanner.nextLine();
-           notify();
         }
 
     }

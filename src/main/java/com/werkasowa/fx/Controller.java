@@ -35,25 +35,29 @@ public class Controller implements Runnable {
 
             //add input to geter from interneter
         }
-
-
     }
 
     @Override
     public void run() {
+        try {
         printer.comunicate("Hello, enter currency signature to get actual prices");
+
         String tickSignature = listener.getLastOrder();
-        //wait&notify
+
+        //wait&notify?????????????????????????????????????????????
         tickContainer.addPair(tickSignature);
         Thread ticking = new Thread(tickContainer);
         ticking.start();
+
         while (true) {
             printer.printTicks(tickContainer);
-            try {
+
                 Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+
+        }
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 }
