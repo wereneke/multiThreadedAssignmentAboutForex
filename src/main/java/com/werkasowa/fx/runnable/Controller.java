@@ -37,7 +37,9 @@ public class Controller implements Runnable {
 
     private void quit() {
         if (ticking.isAlive()) ticking.interrupt();
+        listening.interrupt();
         Thread.currentThread().interrupt();
+        System.exit(0);
     }
 
     @Override
