@@ -5,11 +5,14 @@ import com.werkasowa.fx.tick.TickContainer;
 public class Controller implements Runnable {
 
     private Printer printer;
+
     private TickContainer tickContainer;
     private Thread ticking;
+
     private Listener listener;
     private Thread listening;
 
+    private Thread currentThread = Thread.currentThread();
 
     public Controller() {
 
@@ -18,6 +21,7 @@ public class Controller implements Runnable {
         this.ticking = new Thread(tickContainer);
         this.listener = new Listener();
         this.listening = new Thread(listener);
+
     }
 
     private void handleInput(String input) {
@@ -52,7 +56,7 @@ public class Controller implements Runnable {
             tickContainer.addTick("EURUSD");
             ticking.start();
             while (Thread.currentThread().isAlive()) {
-                synchronized (listener) {
+                synchronized (listening) {
                     while (listener.typing) wait();
                 }
                 String order = listener.getLastOrder();

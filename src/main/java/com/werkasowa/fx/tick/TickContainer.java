@@ -41,7 +41,10 @@ public class TickContainer implements Runnable {
     }
 
     public void removeTick(String tickName) {
-        pairs.replace(tickName, "");
+        pairs = pairs.replace(tickName, "");
+        pairs = pairs.replace(",,", ",");
+        pairs = pairs.replace("=,", "=");
+        pairs = pairs.replace(",&", "&");
     }
 
     public Tick[] getTicks() {

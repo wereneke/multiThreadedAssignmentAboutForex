@@ -31,7 +31,6 @@ public class Listener implements Runnable {
             this.typing = true;
             synchronized (this) {
                 lastOrder = scanner.nextLine();
-                System.out.println(lastOrder);
                 notifyAll();
             }
             this.typing = false;
