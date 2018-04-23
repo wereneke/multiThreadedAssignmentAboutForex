@@ -24,12 +24,10 @@ public class Controller implements Runnable {
 
         if (input.equals(".quit")) {
             quit();
-        }
-        if (input.startsWith("rm")) {
+        } else if (input.startsWith("rm")) {
             String tickName = input.substring(3,9);
             tickContainer.removeTick(tickName);
-        }
-        if (input.startsWith("add")) {
+        } else if (input.startsWith("add")) {
             String tickName = input.substring(4,10);
             tickContainer.addTick(tickName);
         } else {
@@ -58,13 +56,13 @@ public class Controller implements Runnable {
                 String order = listener.getLastOrder();
                 if (order!=null) {
                     handleInput(order);
+                    listener.eraseLastOrder();
                 }
                 if (tickContainer.getTicks().length!=0) {
                     printer.printTicks(tickContainer);
                 }
 
                 Thread.sleep(5000);
-
             }
 
         } catch (InterruptedException e) {

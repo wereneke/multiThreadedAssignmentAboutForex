@@ -8,11 +8,11 @@ import java.util.Arrays;
 @Component
 public class Printer {
 
-    private String prompt = "enter" +
-            ".quit          to quit the application" +
-            "rm [tick]      to stop tracking specified tick" +
-            "add [tick]     to start tracking specified tick" +
-            "[enter key]    to be in writing mode";
+    private String prompt = "enter \n" +
+            ".quit          to quit the application \n" +
+            "rm [tick]      to stop tracking specified tick \n" +
+            "add [tick]     to start tracking specified tick \n" +
+            "[enter key]    to be in writing mode \n";
 
 
     public void printPrompt() {
