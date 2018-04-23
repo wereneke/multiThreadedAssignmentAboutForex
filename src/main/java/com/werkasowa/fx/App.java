@@ -1,5 +1,6 @@
 package com.werkasowa.fx;
 
+import com.werkasowa.fx.runnable.Controller;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 

@@ -1,6 +1,4 @@
-package com.werkasowa.fx.runnable;
-
-import com.werkasowa.fx.tick.Tick;
+package com.werkasowa.fx.tick;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -11,7 +9,7 @@ public class TickContainer implements Runnable {
     private String pairs = new String();
     private StringBuilder sb = new StringBuilder();
     private RestTemplate restTemplate = new RestTemplate();
-    private Tick[] ticks = null;
+    private Tick[] ticks = new Tick[0];
 
     private void updateTicks() {
 
@@ -27,7 +25,7 @@ public class TickContainer implements Runnable {
         return sb.toString();
     }
 
-    public void addPair(String pair) {
+    public void addTick(String pair) {
 
         if (!pairs.contains(pair)) {
 
@@ -42,12 +40,12 @@ public class TickContainer implements Runnable {
         }
     }
 
-    public Tick[] getTicks() {
-        return ticks;
+    public void removeTick(String tickName) {
+        pairs.replace(tickName, "");
     }
 
-    public String getPairs() {
-        return pairs;
+    public Tick[] getTicks() {
+        return ticks;
     }
 
     @Override
