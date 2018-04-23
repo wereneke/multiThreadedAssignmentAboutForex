@@ -17,5 +17,6 @@ public class App implements ApplicationRunner {
     public void run(ApplicationArguments applicationArguments) {
         Thread controlling = new Thread(new Controller());
         controlling.start();
+
     }
 }

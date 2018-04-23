@@ -1,7 +1,10 @@
 package com.werkasowa.fx.runnable;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class Listener implements Runnable {
 
     private Scanner scanner;
@@ -9,6 +12,7 @@ public class Listener implements Runnable {
 
     public Listener() {
         this.scanner  = new Scanner(System.in);
+
     }
 
     public void run() {
@@ -16,7 +20,6 @@ public class Listener implements Runnable {
         while (!Thread.currentThread().isInterrupted()) {
 
             listen();
-
         }
         scanner.close();
     }
@@ -34,3 +37,4 @@ public class Listener implements Runnable {
     }
 
 }
+

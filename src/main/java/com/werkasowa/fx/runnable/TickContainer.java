@@ -2,20 +2,20 @@ package com.werkasowa.fx.runnable;
 
 import com.werkasowa.fx.tick.Tick;
 
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+@Component
 public class TickContainer implements Runnable {
 
-    private String pairs = "";
+    private String pairs = new String();
     private StringBuilder sb = new StringBuilder();
     private RestTemplate restTemplate = new RestTemplate();
+    private Tick[] ticks = null;
 
-    public Tick[] getTicks() {
+    private void updateTicks() {
 
-        Tick[] ticks = restTemplate.getForObject(createURL(), Tick[].class);
-
-        return ticks;
+        this.ticks = restTemplate.getForObject(createURL(), Tick[].class);
     }
 
     private String createURL() {
@@ -32,11 +32,22 @@ public class TickContainer implements Runnable {
         if (!pairs.contains(pair)) {
 
             sb.setLength(0);
-            if (pairs.length()!=0) sb.append(",");
+            if (pairs.length()!=0) {
+                sb.append(pairs);
+                sb.append(",");
+            }
             sb.append(pair);
 
             pairs = sb.toString();
         }
+    }
+
+    public Tick[] getTicks() {
+        return ticks;
+    }
+
+    public String getPairs() {
+        return pairs;
     }
 
     @Override
@@ -44,8 +55,10 @@ public class TickContainer implements Runnable {
 
         try {
             while (!Thread.interrupted()) {
-                getTicks();
-                Thread.sleep(3000);
+
+                updateTicks();
+                Thread.sleep(5000);
+
             }
         }catch (InterruptedException e) {}
 
