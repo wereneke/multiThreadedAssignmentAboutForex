@@ -1,51 +1,48 @@
 package com.werkasowa.fx.runnable;
 
+import org.springframework.stereotype.Component;
+
 import java.util.Scanner;
 
+@Component
 public class Listener implements Runnable {
 
     private Scanner scanner;
+    private String lastOrder = null;
+    public boolean typing = false;
 
     public Listener() {
         this.scanner  = new Scanner(System.in);
+
     }
 
     public void run() {
 
         while (!Thread.currentThread().isInterrupted()) {
 
-            String input = listen();
-            if (input != null) {
-                handleInput(input);
-            }
+                listen();
         }
         scanner.close();
     }
 
-    private String listen() {
+    private void listen() {
 
-        String input = null;
-        if (scanner.hasNextLine()) {
-           input = scanner.nextLine();
+        if (scanner.hasNext()) {
+            this.typing = true;
+            synchronized (this) {
+                lastOrder = scanner.nextLine();
+                notifyAll();
+            }
+            this.typing = false;
         }
-        return input;
     }
 
-    private void handleInput(String input) {
+    public String getLastOrder() {
+        return lastOrder;
+    }
 
-        if (input.equals(".quit")) {
-            //code for closing app
-        }
-        if (input.startsWith("rm")) {
-            String tickName = input.substring(3,9);
-
-            // remove tickname from getting it from internet
-        }
-        if (input.length()==6) {
-
-            //add input to geter from interneter
-        }
-
-
+    public void eraseLastOrder() {
+        this.lastOrder = null;
     }
 }
+

@@ -1,13 +1,9 @@
 package com.werkasowa.fx;
 
-
-import com.werkasowa.fx.runnable.TickContainer;
+import com.werkasowa.fx.runnable.Controller;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 
-import java.util.Arrays;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -19,17 +15,9 @@ public class App implements ApplicationRunner {
     }
 
     @Override
-    public void run(ApplicationArguments applicationArguments) throws Exception {
+    public void run(ApplicationArguments applicationArguments) {
+        Thread controlling = new Thread(new Controller());
+        controlling.start();
 
-        TickContainer ticks = new TickContainer();
-
-        ticks.addPair("EURUSD");
-
-        Thread ticking = new Thread(ticks);
-        ticking.start();
-
-        while (ticking.isAlive()) {
-            Arrays.asList(ticks.getTicks()).forEach(System.out::println);
-        }
     }
 }
