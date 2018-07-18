@@ -1,32 +1,30 @@
 package com.werkasowa.fx.runnable;
 
+import com.werkasowa.fx.tick.TickContainer;
+import org.springframework.stereotype.Component;
 
-public class Printer implements Runnable {
+import java.util.Arrays;
 
-    public void run() {
+@Component
+public class Printer {
 
-        try {
-            while (true) {
-                Thread.sleep(1000);
-            }
-        } catch (InterruptedException e) {
+    private String prompt = "enter \n" +
+            ".quit          to quit the application \n" +
+            "rm [tick]      to stop tracking specified tick \n" +
+            "add [tick]     to start tracking specified tick \n" +
+            "[enter key]    to be in writing mode \n";
 
-            // to change --------------------------------
-            System.out.println("Printer interrupted");
-            try {
-                Thread.sleep(3000);
-                new Printer().run();
-            } catch (InterruptedException e1) {}
-            // ------------------------------------------
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void printPrompt() {
+        communicate(prompt);
     }
 
+    public void communicate(String message) {
+        System.out.println(message);
+    }
 
+    public void printTicks(TickContainer ticks) {
+        Arrays.asList(ticks.getTicks()).forEach(System.out::println);
 
-
-
-
+    }
 }
