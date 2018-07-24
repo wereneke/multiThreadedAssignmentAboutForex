@@ -13,13 +13,11 @@ public class Listener implements Runnable {
 
     public Listener() {
         this.scanner  = new Scanner(System.in);
-
     }
 
     public void run() {
 
-        while (!Thread.currentThread().isInterrupted()) {
-
+        while (Thread.currentThread().isAlive()) {
                 listen();
         }
         scanner.close();

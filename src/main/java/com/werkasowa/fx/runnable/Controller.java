@@ -1,5 +1,6 @@
 package com.werkasowa.fx.runnable;
 
+import com.werkasowa.fx.helper.Printer;
 import com.werkasowa.fx.tick.TickContainer;
 
 public class Controller implements Runnable {
@@ -11,8 +12,6 @@ public class Controller implements Runnable {
 
     private Listener listener;
     private Thread listening;
-
-    private Thread currentThread = Thread.currentThread();
 
     public Controller() {
 

@@ -1,4 +1,4 @@
-package com.werkasowa.fx.runnable;
+package com.werkasowa.fx.helper;
 
 import com.werkasowa.fx.tick.TickContainer;
 import org.springframework.stereotype.Component;
