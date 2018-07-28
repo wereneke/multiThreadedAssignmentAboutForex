@@ -10,12 +10,17 @@ public class TickContainer implements Runnable {
     private StringBuilder sb = new StringBuilder();
     private RestTemplate restTemplate = new RestTemplate();
     private Tick[] ticks = new Tick[0];
+    private String[] available = new String[0];
 
     private void updateTicks() {
 
         this.ticks = restTemplate.getForObject(createURL(), Tick[].class);
     }
 
+    private void setAvailable() {
+        String url = "https://forex.1forge.com/1.0.3/symbols?api_key=r5WczlowKoennZAzRD6hNppugGxVATMR";
+        this.available = restTemplate.getForObject(url, String[].class);
+    }
     private String createURL() {
         sb.setLength(0);
 
@@ -53,6 +58,8 @@ public class TickContainer implements Runnable {
 
     @Override
     public void run() {
+
+        setAvailable();
 
         try {
             while (!Thread.interrupted()) {

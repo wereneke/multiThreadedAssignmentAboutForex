@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:controller="com.werkasowa.fx.controller.FxController"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+    <padding><Insets top="25" right="25" left="25" bottom="25"/></padding>
+
+    <Text text="welcome"
+          GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2"/>
+
+    <Label text = "user name"
+           GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="password" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <PasswordField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+    <HBox spacing="10" alignment="BOTTOM_RIGHT"
+          GridPane.columnIndex="1" GridPane.rowIndex="4">
+        <Button text="sign in"
+                onAction="#handleSubmitButtonAction"/>
+    </HBox>
+
+    <Text fx:id="actiontarget"
+          GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+</GridPane>
