@@ -5,13 +5,13 @@ import com.werkasowa.fx.tick.TickContainer;
 
 public class Controller implements Runnable {
 
-    private Printer printer;
+    private final Printer printer;
 
-    private TickContainer tickContainer;
-    private Thread ticking;
+    private final TickContainer tickContainer;
+    private final Thread ticking;
 
-    private Listener listener;
-    private Thread listening;
+    private final Listener listener;
+    private final Thread listening;
 
     public Controller() {
 

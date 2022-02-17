@@ -1,13 +1,10 @@
 package com.werkasowa.fx.runnable;
 
-import org.springframework.stereotype.Component;
-
 import java.util.Scanner;
 
-@Component
 public class Listener implements Runnable {
 
-    private Scanner scanner;
+    private final Scanner scanner;
     private String lastOrder = null;
     public boolean typing = false;
 
