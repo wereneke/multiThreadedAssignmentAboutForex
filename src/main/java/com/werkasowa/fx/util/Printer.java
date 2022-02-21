@@ -1,4 +1,4 @@
-package com.werkasowa.fx.helper;
+package com.werkasowa.fx.util;
 
 import com.werkasowa.fx.tick.TickContainer;
 

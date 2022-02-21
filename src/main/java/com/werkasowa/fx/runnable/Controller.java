@@ -1,6 +1,6 @@
 package com.werkasowa.fx.runnable;
 
-import com.werkasowa.fx.helper.Printer;
+import com.werkasowa.fx.util.Printer;
 import com.werkasowa.fx.tick.TickContainer;
 
 public class Controller implements Runnable {
